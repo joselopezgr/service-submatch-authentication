@@ -18,7 +18,6 @@ repositories {
 dependencies {
 	implementation(project(":domain"))
 	implementation(project(":host"))
-	implementation(project(":mongodb-adaptor"))
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -31,5 +30,5 @@ tasks.withType<Test> {
 
 springBoot {
 	buildInfo()
-	mainClass = "com.jlg.submatch.service.user.ServiceUserApplication"
+	mainClass = "com.jlg.submatch.service.authentication.ServiceAuthenticationApplication"
 }

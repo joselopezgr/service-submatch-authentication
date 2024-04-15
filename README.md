@@ -1,8 +1,8 @@
-# service-project-submatch
+# service-submatch-authentication
 
 ⚠️ `This is a service in progress, not ready for deployment. `
 
-This is the user service for Submatch project
+This is the authentication service for Submatch project
 
 Submatch is going to be my creation for the final project of the Software Engineering Apprenticeship. It is a platform that will
 allow Schools and Subtitute teachers to connect with each other, improving the process of finding a substitute teacher for a class.

@@ -1,5 +1,4 @@
-rootProject.name = "service-submatch-user"
+rootProject.name = "service-submatch-authentication"
 include("application")
 include("domain")
 include("host")
-include("mongodb-adaptor")
