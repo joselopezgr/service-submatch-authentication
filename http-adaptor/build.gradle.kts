@@ -1,13 +1,10 @@
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     id("java")
-    id("io.spring.dependency-management") version "1.1.4"
     id("org.springframework.boot") version "3.2.1" apply false
+    id("io.spring.dependency-management") version "1.1.4"
     id("jacoco")
-    id("java-test-fixtures")
 }
 
 group = "com.jlg.submatch.service.user"
@@ -27,13 +24,12 @@ dependencyManagement {
     }
 }
 
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.projectlombok:lombok")
+    implementation(project(":domain"))
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.projectreactor:reactor-test:3.6.0")
 }
 
 tasks.test {
