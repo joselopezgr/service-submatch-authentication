@@ -1,4 +1,4 @@
-package com.jlg.submatch.service.authentication.model;
+package com.jlg.submatch.service.authentication.dtos.user;
 
 public record UserRoleRecord (
         String adminRole,

@@ -1,6 +1,6 @@
 package com.jlg.submatch.service.authentication.controller;
 
-import com.jlg.submatch.service.authentication.service.AuthenticationService;
+import com.jlg.submatch.service.authentication.service.user.AuthenticationService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
