@@ -4,17 +4,17 @@ package com.jlg.submatch.service.authentication.service.user.impl;
 import com.jlg.submatch.service.authentication.dtos.FindUserRequestDTO;
 import com.jlg.submatch.service.authentication.exception.AuthenticationException;
 import com.jlg.submatch.service.authentication.dtos.user.UserRecord;
-import com.jlg.submatch.service.authentication.service.user.AuthenticationService;
+import com.jlg.submatch.service.authentication.service.user.UserDomainService;
 import com.jlg.submatch.service.authentication.strategy.UserDomainStrategy;
 
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractAuthenticationService implements AuthenticationService {
+public abstract class AbstractUserDomainService implements UserDomainService {
 
     private final List<UserDomainStrategy> strategies;
 
-    protected AbstractAuthenticationService(List<UserDomainStrategy> strategies) {
+    protected AbstractUserDomainService(List<UserDomainStrategy> strategies) {
         this.strategies = strategies;
     }
 

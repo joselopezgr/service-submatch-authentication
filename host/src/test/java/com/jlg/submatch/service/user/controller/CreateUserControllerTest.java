@@ -2,7 +2,7 @@
 //
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.jlg.submatch.service.dto.authentication.UserRequestDTO;
-//import com.jlg.submatch.service.user.service.AuthenticationService;
+//import com.jlg.submatch.service.user.service.UserDomainService;
 //import org.junit.jupiter.api.*;
 //import org.mockito.Mock;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@
 //public class CreateUserControllerTest {
 //
 //    @MockBean
-//    AuthenticationService authenticationService;
+//    UserDomainService authenticationService;
 //
 //    @Autowired
 //    private MockMvc mockMvc;

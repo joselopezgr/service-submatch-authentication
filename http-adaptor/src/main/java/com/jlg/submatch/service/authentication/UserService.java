@@ -10,5 +10,5 @@ import org.springframework.web.service.annotation.PostExchange;
 public interface UserService {
     @PostExchange("/users/find-user")
     @Cacheable("findUserResults")
-    UserRecord findUser(@PathVariable String id, @RequestBody FindUserRequestDTO findUserRequestDTO);
+    UserRecord findUser(@PathVariable String id, @RequestBody FindUserRequestDTO<UserRecord> findUserRequestDTO);
 }
