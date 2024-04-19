@@ -1,10 +1,9 @@
-package com.jlg.submatch.service.user.service;
+package com.jlg.submatch.service.authentication.service;
 
 import com.jlg.submatch.service.authentication.UserService;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationResponseDTO;
 import com.jlg.submatch.service.authentication.dtos.auth.RegisterRequestDTO;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;

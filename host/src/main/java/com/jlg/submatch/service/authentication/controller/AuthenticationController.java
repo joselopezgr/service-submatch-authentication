@@ -3,7 +3,7 @@ package com.jlg.submatch.service.authentication.controller;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationResponseDTO;
 import com.jlg.submatch.service.authentication.dtos.auth.RegisterRequestDTO;
-import com.jlg.submatch.service.user.service.AuthenticationService;
+import com.jlg.submatch.service.authentication.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

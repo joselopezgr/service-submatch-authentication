@@ -1,6 +1,6 @@
-package com.jlg.submatch.service.user;
+package com.jlg.submatch.service.authentication;
 
-import com.jlg.submatch.service.user.service.JwtService;
+import com.jlg.submatch.service.authentication.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.jlg.submatch.service.user.config;
+package com.jlg.submatch.service.authentication.config;
 
 import com.jlg.submatch.service.authentication.UserService;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;

@@ -1,4 +1,4 @@
-package com.jlg.submatch.service.user.service;
+package com.jlg.submatch.service.authentication.service;
 
 import com.jlg.submatch.service.authentication.dtos.user.UserRecord;
 import io.jsonwebtoken.Claims;
