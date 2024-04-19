@@ -28,19 +28,19 @@ public class AuthenticationService {
                         authenticationRequestDTO.getPassword()
                 )
         );
-        var user = userService.findUser(authenticationRequestDTO);
-        return null;
+        var user = userService.findUser(authenticationRequestDTO).orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponseDTO.builder()
+                .token(jwtToken)
+                .build();
     }
 
     public AuthenticationResponseDTO register(RegisterRequestDTO registerRequestDTO) {
-        var user = userService.createUser(registerRequestDTO);
-        if(user.isPresent()){
-            var validated = user.get();
-            var jwtToken = jwtService.generateToken(validated);
-            return AuthenticationResponseDTO.builder()
-                    .token(jwtToken)
-                    .build();
-        }
-        return null;
+        var user = userService.createUser(registerRequestDTO).orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+
+        return AuthenticationResponseDTO.builder()
+                .token(jwtToken)
+                .build();
     }
 }

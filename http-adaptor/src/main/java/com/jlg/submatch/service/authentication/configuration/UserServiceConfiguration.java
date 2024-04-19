@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 @Configuration
 @PropertySources({
         @PropertySource("classpath:outbound-api-client.properties"),
-        @PropertySource(value = "classpath:outbound-api-client-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
+//        @PropertySource(value = "classpath:outbound-api-client-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
 })
 @EnableConfigurationProperties(UserServiceConfigurationProperties.class)
 public class UserServiceConfiguration {

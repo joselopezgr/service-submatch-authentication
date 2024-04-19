@@ -10,10 +10,10 @@ import org.springframework.web.service.annotation.PostExchange;
 import java.util.Optional;
 
 public interface UserService {
-    @PostExchange("/users/find-user")
+    @PostExchange("/users/{id}")
     @Cacheable("findUserResults")
     Optional<UserRecord> findUser(@RequestBody AuthenticationRequestDTO authenticationRequestDTO);
 
-    @PostExchange("/users/create-user")
+    @PostExchange("/users/create")
     Optional<UserRecord> createUser(@RequestBody RegisterRequestDTO createUserRequestDTO);
 }
