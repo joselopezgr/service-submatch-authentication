@@ -1,10 +1,12 @@
 package com.jlg.submatch.service.authentication.handlers;
 
 import com.jlg.submatch.service.authentication.UserService;
-import com.jlg.submatch.service.authentication.dtos.FindUserRequestDTO;
+import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;
 import com.jlg.submatch.service.authentication.dtos.user.UserRecord;
 import com.jlg.submatch.service.authentication.handler.FindUserHandler;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class UserServiceFindUserHandler implements FindUserHandler {
@@ -16,7 +18,7 @@ public class UserServiceFindUserHandler implements FindUserHandler {
     }
 
     @Override
-    public UserRecord findUser(String id, FindUserRequestDTO<UserRecord> userData) {
-        return this.userService.findUser(id, userData);
+    public Optional<UserRecord> findUser(AuthenticationRequestDTO userData) {
+        return this.userService.findUser(userData);
     }
 }

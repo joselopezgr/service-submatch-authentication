@@ -1,4 +1,4 @@
-package com.jlg.submatch.service.authentication.service.user.impl;
+package com.jlg.submatch.service.authentication.service.impl;
 
 import com.jlg.submatch.service.authentication.strategy.UserDomainStrategy;
 import org.springframework.stereotype.Service;

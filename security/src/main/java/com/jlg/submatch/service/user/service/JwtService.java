@@ -1,5 +1,6 @@
 package com.jlg.submatch.service.user.service;
 
+import com.jlg.submatch.service.authentication.dtos.user.UserRecord;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -29,16 +30,16 @@ public class JwtService {
         return claimResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(UserRecord userDetails){
         return generateToken(new HashMap<>(), userDetails);
     }
     public String generateToken(
             Map<String, Object> extractedClaim,
-            UserDetails userDetails
+            UserRecord userDetails
     ) {
         return Jwts.builder()
                 .claims(extractedClaim)
-                .subject(userDetails.getUsername())
+                .subject(userDetails.email())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
                 .signWith(getSignInKey(), Jwts.SIG.HS256)

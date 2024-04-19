@@ -18,8 +18,8 @@ repositories {
 dependencies {
 	implementation(project(":domain"))
 	implementation(project(":host"))
-	implementation(project(":security"))
 	implementation(project(":http-adaptor"))
+	implementation(project(":security"))
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -33,4 +33,8 @@ tasks.withType<Test> {
 springBoot {
 	buildInfo()
 	mainClass = "com.jlg.submatch.service.authentication.ServiceAuthenticationApplication"
+}
+
+tasks.withType<JavaCompile>(){
+	options.compilerArgs.add("-parameters")
 }

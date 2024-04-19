@@ -1,4 +1,4 @@
-package com.jlg.submatch.service.authentication.dto;
+package com.jlg.submatch.service.authentication.dtos.user;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
