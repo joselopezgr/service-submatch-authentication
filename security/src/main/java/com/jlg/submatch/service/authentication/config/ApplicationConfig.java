@@ -25,7 +25,7 @@ public class ApplicationConfig {
     public UserDetailsService userDetailsService() {
         return username -> {
             AuthenticationRequestDTO authenticationRequestDTO = convertToFindUserRequestDTO(username);
-            userService.findUser(authenticationRequestDTO)
+            userService.findUserByEmail(authenticationRequestDTO.getUsername())
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
             return null;

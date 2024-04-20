@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserDomainStrategy {
 
-    Optional<FindUserHandler> findUserHandler(AuthenticationRequestDTO userData);
+    Optional<FindUserHandler> findUserHandler(String email);
 
     Optional<CreateUserHandler> createUserHandler(RegisterRequestDTO userData);
 }

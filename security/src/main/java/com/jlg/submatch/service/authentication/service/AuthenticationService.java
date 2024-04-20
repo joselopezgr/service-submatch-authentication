@@ -28,7 +28,7 @@ public class AuthenticationService {
                         authenticationRequestDTO.getPassword()
                 )
         );
-        var user = userService.findUser(authenticationRequestDTO).orElseThrow();
+        var user = userService.findUserByEmail(authenticationRequestDTO.getUsername()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
@@ -37,9 +37,7 @@ public class AuthenticationService {
 
     public AuthenticationResponseDTO register(RegisterRequestDTO registerRequestDTO) {
         var user = userService.createUser(registerRequestDTO).orElseThrow();
-        System.out.println("User: " + user);
         String jwtToken = jwtService.generateToken(user);
-        System.out.println("Jwt token: " + jwtToken);
 
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)

@@ -20,7 +20,7 @@ public class UserAPIStrategy implements UserDomainStrategy {
     }
 
     @Override
-    public Optional<FindUserHandler> findUserHandler(AuthenticationRequestDTO userData) {
+    public Optional<FindUserHandler> findUserHandler(String email) {
         return Optional.of(findUserHandler);
     }
 

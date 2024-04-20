@@ -18,7 +18,7 @@ public class UserServiceFindUserHandler implements FindUserHandler {
     }
 
     @Override
-    public Optional<UserRecord> findUser(AuthenticationRequestDTO userData) {
-        return this.userService.findUser(userData);
+    public Optional<UserRecord> findUserByEmail(String email) {
+        return this.userService.findUserByEmail(email);
     }
 }

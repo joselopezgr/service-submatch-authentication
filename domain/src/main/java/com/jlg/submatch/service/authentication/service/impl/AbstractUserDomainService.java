@@ -22,12 +22,12 @@ public abstract class AbstractUserDomainService implements UserDomainService {
     @Override
     public Optional<UserRecord> findUser(AuthenticationRequestDTO userData) {
         var handler = strategies.stream()
-                .map(strategy -> strategy.findUserHandler(userData))
+                .map(strategy -> strategy.findUserHandler(userData.getUsername()))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst()
                 .orElseThrow(() -> new AuthenticationException("Handler not found"));
-        return handler.findUser(userData);
+        return handler.findUserByEmail(userData.getUsername());
     }
 
     @Override
