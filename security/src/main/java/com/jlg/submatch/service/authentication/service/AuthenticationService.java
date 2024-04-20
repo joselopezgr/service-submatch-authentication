@@ -37,7 +37,9 @@ public class AuthenticationService {
 
     public AuthenticationResponseDTO register(RegisterRequestDTO registerRequestDTO) {
         var user = userService.createUser(registerRequestDTO).orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
+        System.out.println("User: " + user);
+        String jwtToken = jwtService.generateToken(user);
+        System.out.println("Jwt token: " + jwtToken);
 
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
