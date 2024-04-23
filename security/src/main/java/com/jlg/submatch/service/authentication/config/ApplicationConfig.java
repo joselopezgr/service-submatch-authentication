@@ -8,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,11 +25,13 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            AuthenticationRequestDTO authenticationRequestDTO = convertToFindUserRequestDTO(username);
-            userService.findUserByEmail(authenticationRequestDTO.getUsername())
-                    .orElseThrow(() -> new RuntimeException("User not found"));
-
-            return null;
+            var user = convertToFindUserRequestDTO(username);
+            var userRecord = userService.findUserByEmail(username).orElseThrow();
+            return User
+                    .withUsername(username)
+                    .password(userRecord.password())
+                    .roles("USER")
+                    .build();
         };
     }
 
