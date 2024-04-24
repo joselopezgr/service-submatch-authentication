@@ -1,5 +1,6 @@
 package com.jlg.submatch.service.authentication.dtos.auth;
 
+import com.jlg.submatch.service.authentication.dtos.user.UserRole;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.management.relation.Role;
 import java.util.List;
 
 @Data
@@ -29,6 +31,5 @@ public class RegisterRequestDTO {
 
     private String address;
 
-    @Pattern(regexp = "^(USER|ADMIN)$")
-    private String role;
+    private UserRole role;
 }

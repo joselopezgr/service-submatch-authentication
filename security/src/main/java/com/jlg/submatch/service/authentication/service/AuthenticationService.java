@@ -25,16 +25,13 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO authenticationRequestDTO) {
-        System.out.println("Authenticating user: " + authenticationRequestDTO.getUsername());
         var authUser = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         authenticationRequestDTO.getUsername(),
                         authenticationRequestDTO.getPassword()
                 )
         );
-        System.out.println("User authenticated!!!!!");
         var user = userService.findUserByEmail(authenticationRequestDTO.getUsername()).orElseThrow();
-        System.out.println("User returned: " + user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)

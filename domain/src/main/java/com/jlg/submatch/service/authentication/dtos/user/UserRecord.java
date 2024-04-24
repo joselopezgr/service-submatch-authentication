@@ -10,6 +10,6 @@ public record UserRecord(
         String lastName,
         String phone,
         String address,
-        List<String> role
+        UserRole role
 ) {
 }
