@@ -2,6 +2,7 @@ package com.jlg.submatch.service.authentication.config;
 
 import com.jlg.submatch.service.authentication.UserService;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;
+import com.jlg.submatch.service.authentication.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,29 +17,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class ApplicationConfig {
 
-    private final UserService userService;
+    private final CustomUserDetailsService customUserDetailsService;
 
-    public ApplicationConfig(UserService userService) {
-        this.userService = userService;
+    public ApplicationConfig(UserService userService, CustomUserDetailsService customUserDetailsService) {
+        this.customUserDetailsService = customUserDetailsService;
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return username -> {
-            var user = convertToFindUserRequestDTO(username);
-            var userRecord = userService.findUserByEmail(username).orElseThrow();
-            return User
-                    .withUsername(username)
-                    .password(userRecord.password())
-                    .roles("USER")
-                    .build();
-        };
-    }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setUserDetailsService(customUserDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }

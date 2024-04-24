@@ -1,5 +1,7 @@
 package com.jlg.submatch.service.authentication.dtos.user;
 
+import java.util.List;
+
 public record UserRecord(
         String id,
         String password,
@@ -8,6 +10,6 @@ public record UserRecord(
         String lastName,
         String phone,
         String address,
-        String role
+        List<String> role
 ) {
 }

@@ -27,7 +27,6 @@ dependencyManagement {
 dependencies {
     implementation(project(":domain"))
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-validation")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test:3.6.0")
 }

@@ -27,6 +27,7 @@ public class AuthenticationController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<AuthenticationResponseDTO> authenticate(
             @RequestBody AuthenticationRequestDTO authRequestDTO) {
+        System.out.println("Authenticating user: " + authRequestDTO.getUsername());
         return ResponseEntity.ok(authenticationService.authenticate(authRequestDTO));
     }
 }
