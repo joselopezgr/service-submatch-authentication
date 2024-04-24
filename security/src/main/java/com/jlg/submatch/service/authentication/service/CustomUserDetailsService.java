@@ -22,7 +22,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         UserRecord user = userService.findUserByEmail(username).orElseThrow();
-
         List<SimpleGrantedAuthority> authorities = user.role().stream()
                 .map(SimpleGrantedAuthority::new)
                 .toList();

@@ -6,6 +6,7 @@ import com.jlg.submatch.service.authentication.dtos.auth.RegisterRequestDTO;
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,21 +15,26 @@ public class AuthenticationService {
     private final UserService userService;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthenticationService(UserService userService, JwtService jwtService, AuthenticationManager authenticationManager) {
+    public AuthenticationService(UserService userService, JwtService jwtService, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
     }
 
     public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO authenticationRequestDTO) {
-        authenticationManager.authenticate(
+        System.out.println("Authenticating user: " + authenticationRequestDTO.getUsername());
+        var authUser = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         authenticationRequestDTO.getUsername(),
                         authenticationRequestDTO.getPassword()
                 )
         );
+        System.out.println("User authenticated!!!!!");
         var user = userService.findUserByEmail(authenticationRequestDTO.getUsername()).orElseThrow();
+        System.out.println("User returned: " + user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
@@ -36,9 +42,9 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponseDTO register(RegisterRequestDTO registerRequestDTO) {
-        System.out.println("Registering user: " + registerRequestDTO);
+        var encodedPassword = passwordEncoder.encode(registerRequestDTO.getPassword());
+        registerRequestDTO.setPassword(encodedPassword);
         var user = userService.createUser(registerRequestDTO).orElseThrow();
-        System.out.println("User created: " + user);
         String jwtToken = jwtService.generateToken(user);
 
         return AuthenticationResponseDTO.builder()
