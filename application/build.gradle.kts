@@ -18,12 +18,13 @@ repositories {
 dependencies {
 	implementation(project(":domain"))
 	implementation(project(":host"))
-	implementation(project(":security"))
 	implementation(project(":http-adaptor"))
+	implementation(project(":security"))
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.109.Final")
 }
 
 tasks.withType<Test> {
@@ -33,4 +34,8 @@ tasks.withType<Test> {
 springBoot {
 	buildInfo()
 	mainClass = "com.jlg.submatch.service.authentication.ServiceAuthenticationApplication"
+}
+
+tasks.withType<JavaCompile>(){
+	options.compilerArgs.add("-parameters")
 }

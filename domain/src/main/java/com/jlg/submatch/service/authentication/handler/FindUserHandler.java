@@ -1,8 +1,10 @@
 package com.jlg.submatch.service.authentication.handler;
 
-import com.jlg.submatch.service.authentication.dtos.FindUserRequestDTO;
+import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDTO;
 import com.jlg.submatch.service.authentication.dtos.user.UserRecord;
 
+import java.util.Optional;
+
 public interface FindUserHandler {
-    UserRecord findUser(String id, FindUserRequestDTO<UserRecord> userData);
+    Optional<UserRecord> findUserByEmail(String email);
 }

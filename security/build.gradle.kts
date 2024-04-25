@@ -26,6 +26,8 @@ dependencyManagement {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":http-adaptor"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.projectlombok:lombok")
