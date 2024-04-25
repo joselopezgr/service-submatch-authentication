@@ -16,14 +16,14 @@ public class AuthenticationController {
 
     public AuthenticationController(AuthenticationService authenticationService) { this.authenticationService = authenticationService; }
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AuthenticationResponseDTO> register(
             @RequestBody RegisterRequestDTO registerRequestDTO) {
         return ResponseEntity.ok(authenticationService.register(registerRequestDTO));
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<AuthenticationResponseDTO> authenticate(
             @RequestBody AuthenticationRequestDTO authRequestDTO) {
