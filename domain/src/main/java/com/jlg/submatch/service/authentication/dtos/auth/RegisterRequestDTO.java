@@ -31,5 +31,6 @@ public class RegisterRequestDTO {
 
     private String address;
 
+    @NotNull()
     private UserRole role;
 }
