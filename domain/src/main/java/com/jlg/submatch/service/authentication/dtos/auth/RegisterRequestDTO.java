@@ -33,5 +33,6 @@ public class RegisterRequestDTO {
 
     private String avatar;
 
+    @NotNull()
     private UserRole role;
 }

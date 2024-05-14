@@ -4,8 +4,8 @@ import java.util.List;
 
 public record UserRecord(
         String id,
-        String password,
         String email,
+        String password,
         String firstName,
         String lastName,
         String phone,
