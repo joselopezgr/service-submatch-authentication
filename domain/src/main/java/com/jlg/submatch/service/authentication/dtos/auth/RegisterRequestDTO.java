@@ -31,5 +31,7 @@ public class RegisterRequestDTO {
 
     private String address;
 
+    private String avatar;
+
     private UserRole role;
 }

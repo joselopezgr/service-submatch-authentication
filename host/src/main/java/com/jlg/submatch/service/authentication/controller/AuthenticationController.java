@@ -4,6 +4,7 @@ import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationRequestDT
 import com.jlg.submatch.service.authentication.dtos.auth.AuthenticationResponseDTO;
 import com.jlg.submatch.service.authentication.dtos.auth.RegisterRequestDTO;
 import com.jlg.submatch.service.authentication.service.AuthenticationService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +21,14 @@ public class AuthenticationController {
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AuthenticationResponseDTO> register(
-            @RequestBody RegisterRequestDTO registerRequestDTO) {
-        return ResponseEntity.ok(authenticationService.register(registerRequestDTO));
+            @RequestBody RegisterRequestDTO registerRequestDTO, HttpServletResponse response) {
+        return ResponseEntity.ok(authenticationService.register(registerRequestDTO, response));
     }
 
     @PostMapping("/signin")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<AuthenticationResponseDTO> authenticate(
-            @RequestBody AuthenticationRequestDTO authRequestDTO) {
-        return ResponseEntity.ok(authenticationService.authenticate(authRequestDTO));
+            @RequestBody AuthenticationRequestDTO authRequestDTO, HttpServletResponse response) {
+        return ResponseEntity.ok(authenticationService.authenticate(authRequestDTO, response));
     }
 }

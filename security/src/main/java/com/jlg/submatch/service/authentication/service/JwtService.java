@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.Cookie;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -25,14 +26,15 @@ public class JwtService {
         return extractClaim(jwtToken, Claims::getSubject);
     }
 
-    public<T> T extractClaim(String jwtToken, Function<Claims, T> claimResolver) {
+    public <T> T extractClaim(String jwtToken, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllClaims(jwtToken);
         return claimResolver.apply(claims);
     }
 
-    public String generateToken(UserRecord userDetails){
+    public String generateToken(UserRecord userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }
+
     public String generateToken(
             Map<String, Object> extractedClaim,
             UserRecord userDetails
@@ -46,6 +48,7 @@ public class JwtService {
                 .compact();
     }
 
+
     private Claims extractAllClaims(String jwtToken) {
         return Jwts
                 .parser()
@@ -53,6 +56,14 @@ public class JwtService {
                 .build()
                 .parseSignedClaims(jwtToken)
                 .getPayload();
+    }
+
+    public Cookie createCookie(String name, String value, int maxAge) {
+        Cookie cookie = new Cookie(name, value);
+        cookie.setMaxAge(maxAge);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        return cookie;
     }
 
     public boolean isTokenValid(String jwtToken, UserDetails userDetails) {
