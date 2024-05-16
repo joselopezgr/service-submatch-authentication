@@ -26,6 +26,10 @@ public class JwtService {
         return extractClaim(jwtToken, Claims::getSubject);
     }
 
+    public String extractRole(String jwtToken) {
+        final Claims claims = extractAllClaims(jwtToken);
+        return claims.get("role", String.class);
+    }
     public <T> T extractClaim(String jwtToken, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllClaims(jwtToken);
         return claimResolver.apply(claims);
@@ -39,11 +43,12 @@ public class JwtService {
             Map<String, Object> extractedClaim,
             UserRecord userDetails
     ) {
+        extractedClaim.put("role", userDetails.role());
         return Jwts.builder()
                 .claims(extractedClaim)
                 .subject(userDetails.email())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(getSignInKey(), Jwts.SIG.HS256)
                 .compact();
     }

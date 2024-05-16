@@ -10,7 +10,7 @@ import org.springframework.web.service.annotation.PostExchange;
 import java.util.Optional;
 
 public interface UserService {
-    @GetExchange("/users/find-email/{email}")
+    @GetExchange("/users/findByEmail/{email}")
     Optional<UserRecord> findUserByEmail(@PathVariable String email);
 
     @PostExchange("/users/create")
