@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 
 import javax.management.relation.Role;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequestDTO {
-
     @NotNull()
     private String email;
     @NotNull()
@@ -30,6 +30,8 @@ public class RegisterRequestDTO {
     private String phone;
 
     private String address;
+
+    private UUID organisationId;
 
     private String avatar;
 

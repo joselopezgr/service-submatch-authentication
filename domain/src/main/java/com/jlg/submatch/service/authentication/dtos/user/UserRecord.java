@@ -1,7 +1,5 @@
 package com.jlg.submatch.service.authentication.dtos.user;
 
-import java.util.List;
-
 public record UserRecord(
         String id,
         String email,

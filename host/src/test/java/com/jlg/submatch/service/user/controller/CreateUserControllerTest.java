@@ -1,8 +1,8 @@
 //package com.jlg.submatch.service.user.controller;
 //
 //import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.jlg.submatch.service.dto.authentication.UserRequestDTO;
-//import com.jlg.submatch.service.user.service.UserDomainService;
+//import com.jlg.submatch.service.authentication.dtos.user.UserRecord;
+//import com.jlg.submatch.service.authentication.service.UserDomainService;
 //import org.junit.jupiter.api.*;
 //import org.mockito.Mock;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@
 //import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 //
-//@WebMvcTest(CreateUserController.class)
+//@WebMvcTest(CreateUserControllerTest.class)
 //public class CreateUserControllerTest {
 //
 //    @MockBean
@@ -41,10 +41,10 @@
 //    @DisplayName("Create a User record")
 //    class CreateTests {
 //        @Mock
-//        private User mockUser;
+//        private UserRecord mockUser;
 //
 //        @Mock
-//        private UserRequestDTO userRequest;
+//        private User userRequest;
 //
 //        @BeforeEach
 //        void setUp() {
